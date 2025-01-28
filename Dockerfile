@@ -18,7 +18,7 @@ RUN wget  $ZIP_URL && \
     mv photogenic/* .
 
 # Set up Apache to run in the foreground
-RUN echo "ServerName localhost " >> /etc/apache2/apache2.conf
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Set working directory
 EXPOSE 80 22
