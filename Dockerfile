@@ -18,3 +18,5 @@ RUN wget  $ZIP_URL && \
 
 # Set working directory
 EXPOSE 80 22
+# Start Apache in the foreground
+CMD ["apachectl", "-D", "FOREGROUND"]
