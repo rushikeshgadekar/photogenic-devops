@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 # Install necessary tools
 RUN apt-get update && \
-    apt-get install -y wget unzip && \
+    apt-get install -y apache2 wget unzip && \
     apt-get clean
 
 # Define variables
@@ -16,7 +16,10 @@ RUN wget  $ZIP_URL && \
     unzip photogenic.zip -d /var/www/html/ && \
     rm -f photogenic.zip
 
+# Set up Apache to run in the foreground
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Set working directory
 EXPOSE 80 22
 # Start Apache in the foreground
-CMD ["apachectl", "-D", "FOREGROUND"]
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
