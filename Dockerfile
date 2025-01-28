@@ -14,7 +14,8 @@ WORKDIR /var/www/html
 # Download the zip file and extract it to the destination directory
 RUN wget  $ZIP_URL && \
     unzip photogenic.zip -d /var/www/html/ && \
-    rm -f photogenic.zip
+    rm -f photogenic.zip && \
+    mv photogenic/* .
 
 # Set up Apache to run in the foreground
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
